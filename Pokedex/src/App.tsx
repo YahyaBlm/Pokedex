@@ -25,39 +25,28 @@ const pokemonList = [
     },
     {
       name: "mew",
+      imgSrc:"https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/151.png",
     },
   ];
 
-function App() {
-
-  const [pokemonIndex, setPokemonIndex] = useState(0);
-
-  const Next = () => {
-    setPokemonIndex(pokemonIndex + 1);
-  };
-
-  const Previous = () => {
-    setPokemonIndex(pokemonIndex - 1);
-  };
-
-  return (
-    <section>
+  function App() {
+    const [pokemonIndex, setPokemonIndex] = useState(0);
+  
+    return (
       <div>
-
+        <nav>
+          {pokemonList.map((p, i) => (
+            <button
+              key={p.name}
+              onClick={() => setPokemonIndex(i)} 
+            >
+              {p.name}
+            </button>
+          ))}
+        </nav>
         <PokemonCard pokemon={pokemonList[pokemonIndex]} />
       </div>
-      <div>
-
-        {pokemonIndex > 0 && (
-          <button onClick={Previous}>Précédent</button>
-        )}
-
-        {pokemonIndex < pokemonList.length - 1 && (
-          <button onClick={Next}>Suivant</button>
-        )}
-      </div>
-    </section>
-  );
-}
-
-export default App;
+    );
+  }
+  
+  export default App;
