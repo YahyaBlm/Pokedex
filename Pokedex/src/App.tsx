@@ -1,9 +1,15 @@
-import React, { useState } from "react";
 import "./App.css";
+import { useState } from "react";
 import PokemonCard from "./components/PokemonCard";
 import NavBar from "./components/NavBar";
+import { useEffect } from "react";
 
-const pokemonList = [
+interface Pokemon {
+  name: string;
+  imgSrc?: string;
+}
+
+const pokemonList: Pokemon[] = [
   {
     name: "bulbasaur",
     imgSrc:
@@ -32,6 +38,12 @@ const pokemonList = [
 ];
 
 function App() {
+  useEffect(() => {
+    pokemonList[pokemonIndex].name === "pikachu"
+      ? alert("Pika Pikachu !!!")
+      : alert("Hello pokemon trainer :)");
+  });
+
   const [pokemonIndex, setPokemonIndex] = useState(0);
 
   return (
